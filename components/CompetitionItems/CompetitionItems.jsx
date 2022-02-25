@@ -1,7 +1,7 @@
 import { CompetitionItem } from '..';
-import styles from './CompetitionItens.module.css'
+import styles from './CompetitionItems.module.css'
 
-const CompetitionItens = () => (
+const CompetitionItems = () => (
     <div className={styles.list}>
         <CompetitionItem title="C1" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</CompetitionItem>
         <CompetitionItem title="C2" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</CompetitionItem>
@@ -11,4 +11,4 @@ const CompetitionItens = () => (
 )
 
 
-export default CompetitionItens
+export default CompetitionItems

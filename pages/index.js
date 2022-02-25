@@ -1,7 +1,7 @@
-import { CompetitionItens } from '../components';
+import { CompetitionItems } from '../components';
 
 export default function Home() {
   return (
-    <CompetitionItens />
+    <CompetitionItems />
   )
 }

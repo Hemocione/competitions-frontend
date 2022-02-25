@@ -1,0 +1,6 @@
+.list {
+    margin: 0px auto;
+    width: 80%;
+    box-shadow:0 0 1em rgb(200, 200, 200);
+    overflow:auto;
+  }

@@ -32,7 +32,7 @@ const CompetitionItem = ({ children, title }) => {
                         TIME TETA:123<br />
                         TIME KAPPA:123<br />
                         TIME GAMA:123<br />
-                        <button>DOEI!</button><br />
+                        <a className={styles.donatedButton} href='/donated'>DOEI!</a><br />
                     </p>
                 </div>
             </div>

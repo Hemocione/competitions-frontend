@@ -3,10 +3,10 @@ import styles from './CompetitionItens.module.css'
 
 const CompetitionItens = () => (
     <ul className={styles.list}>
-        <CompetitionItem name="C1" />
-        <CompetitionItem name="C2" />
-        <CompetitionItem name="C3" />
-        <CompetitionItem name="C4" />
+        <CompetitionItem title="C1" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</CompetitionItem>
+        <CompetitionItem title="C2" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</CompetitionItem>
+        <CompetitionItem title="C3" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</CompetitionItem>
+        <CompetitionItem title="C4" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</CompetitionItem>
     </ul>
 )
 

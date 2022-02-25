@@ -1,0 +1,8 @@
+ul.list {
+    list-style-type: none;
+    margin: auto;
+    width: 60%;
+    border: 5px solid #ff0000;
+    padding: 10px;
+    box-shadow:0 0 1em rgb(73, 69, 69);
+  }

@@ -1,0 +1,19 @@
+.item{
+    padding: 10px;
+    overflow: auto;
+}
+.item img {
+  float: left;
+  margin: 0 15px 0 0;
+  max-height: 150px;
+  max-width: 200px;
+}
+ 
+.item p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+ 
+.item:hover {
+  background: #eee;
+  cursor: pointer;
+}

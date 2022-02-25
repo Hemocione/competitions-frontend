@@ -9,7 +9,7 @@
   max-width: 200px;
 }
  
-.show:hover {
+.wholeItem:hover {
   background: #eee;
   cursor: pointer;
 }

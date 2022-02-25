@@ -1,6 +1,7 @@
 .show{
     padding: 10px;
     overflow: auto;
+    border-bottom: 2px solid rgb(185, 185, 185);
 }
 .show img {
   float: left;
@@ -8,8 +9,32 @@
   max-height: 150px;
   max-width: 200px;
 }
+.hidden{
+  padding: 0px;
+  overflow: hidden;
+  transition: height 0.1s ease-in-out;
+}
  
-.wholeItem:hover {
-  background: #eee;
+.show:hover {
+  background: rgb(233, 233, 233);
   cursor: pointer;
+}
+
+.wholeItem{
+  margin:0px;
+  float:left;
+  padding: 0px;
+  width: 100%;
+}
+
+.wholeItem div{
+  width: 100%;
+  float:left;
+}
+
+.ranking p{
+  margin: 0;
+}
+.ranking{
+  padding: 20px;
 }

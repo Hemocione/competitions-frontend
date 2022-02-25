@@ -1,28 +1,42 @@
 import styles from './CompetitionItem.module.css'
-import React, { useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 const CompetitionItem = ({ children, title }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [height, setHeight] = useState(0);
     const handleFilterOpening = () => {
         setIsOpen((prev) => !prev);
-    };
+    }
+
+
+    const ref = useRef(null);
+
+    useEffect(() => {
+        if (isOpen) setHeight(ref.current?.getBoundingClientRect().height);
+        else setHeight(0);
+    }, [isOpen]);
+
     return (
-        <li className={styles.wholeItem} onClick={handleFilterOpening}>
-            <div className={styles.show}>
+        <div className={styles.wholeItem} >
+            <div className={styles.show} onClick={handleFilterOpening}>
                 <img src="https://upload.travelawaits.com/ta/uploads/2021/04/aerial-view-of-rio-de-janeiroee4454.jpg" />
                 <h3>{title}</h3>
                 <p>{children}</p>
             </div>
-            <div><hr /></div>
-            {isOpen && <div>
-                <p>
-                    RANKING:<br />
-                    TIME ALPHA:123<br />
-                    TIME BETA:123<br />
-                    TIME TETA:123<br />
-                </p>
-            </div>}
-        </li >
+            <div className={styles.hidden} style={{ height }}>
+                <div className={styles.ranking} ref={ref}>
+                    <p>
+                        RANKING:<br />
+                        TIME ALPHA:123<br />
+                        TIME BETA:123<br />
+                        TIME TETA:123<br />
+                        TIME KAPPA:123<br />
+                        TIME GAMA:123<br />
+                        <button>DOEI!</button><br />
+                    </p>
+                </div>
+            </div>
+        </div >
     )
 }
 

@@ -1,7 +1,8 @@
-ul.list {
+.list {
     list-style-type: none;
     margin: auto;
+    float: left;
     width: 60%;
-    padding: 10px;
+    padding: 0px;
     box-shadow:0 0 1em rgb(73, 69, 69);
   }

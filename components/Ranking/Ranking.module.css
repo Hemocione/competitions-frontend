@@ -1,0 +1,17 @@
+table.rtable {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+  
+.rtable td {
+  text-align: left;
+  padding: 18px;
+}
+.rtable th{
+  text-align: left;
+  padding: 18px;
+}
+.rtable tr:nth-child(even) {
+  background-color: #dddddd;
+}

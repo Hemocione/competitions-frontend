@@ -1,7 +1,7 @@
 .show{
-    padding: 10px;
-    overflow: auto;
-    border-bottom: 2px solid rgb(185, 185, 185);
+  padding: 10px;
+  overflow: auto;
+  border-bottom: 2px solid rgb(185, 185, 185);
 }
 .show img {
   float: left;
@@ -12,7 +12,7 @@
 .hidden{
   padding: 0px;
   overflow: hidden;
-  transition: height 0.1s ease-in-out;
+  transition: height 0.3s ease-in-out;
 }
  
 .show:hover {
@@ -36,8 +36,9 @@
   margin: 0;
 }
 .ranking{
-  padding: 20px;
+  padding: 0px;
 }
-.donatedButton{
-  background-color: red;
+.buttonBox{
+  background-color: rgb(255, 220, 220);
+  padding: 30px;
 }

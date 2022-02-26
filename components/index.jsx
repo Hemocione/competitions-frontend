@@ -1,3 +1,5 @@
 export { default as CompetitionItems } from './CompetitionItems/CompetitionItems'
 export { default as CompetitionItem } from './CompetitionItem/CompetitionItem'
 export { default as Forms } from './Forms/Forms'
+export { default as Ranking } from './Ranking/Ranking'
+export { default as ButtonWithLink } from './ButtonWithLink/ButtonWithLink'

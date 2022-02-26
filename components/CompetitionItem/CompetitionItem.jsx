@@ -1,5 +1,6 @@
 import styles from './CompetitionItem.module.css'
 import React, { useRef, useEffect, useState } from "react";
+import { ButtonWithLink, Ranking } from '..'
 
 const CompetitionItem = ({ children, title }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,15 +26,10 @@ const CompetitionItem = ({ children, title }) => {
             </div>
             <div className={styles.hidden} style={{ height }}>
                 <div className={styles.ranking} ref={ref}>
-                    <p>
-                        RANKING:<br />
-                        TIME ALPHA:123<br />
-                        TIME BETA:123<br />
-                        TIME TETA:123<br />
-                        TIME KAPPA:123<br />
-                        TIME GAMA:123<br />
-                        <a className={styles.donatedButton} href='/donated'>DOEI!</a><br />
-                    </p>
+                    <Ranking />
+                    <div className={styles.buttonBox}>
+                        <ButtonWithLink link='/donated' text='Registre sua doação' />
+                    </div>
                 </div>
             </div>
         </div >

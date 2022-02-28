@@ -6,12 +6,19 @@ table.rtable {
   
 .rtable td {
   text-align: left;
-  padding: 18px;
+  padding: 8px;
 }
 .rtable th{
   text-align: left;
-  padding: 18px;
+  padding: 9px;
 }
 .rtable tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+.buttonBox{
+  background-color: rgb(255, 220, 220);
+  padding: 15px;
+  text-align: center;
+  min-height: 50px;
 }

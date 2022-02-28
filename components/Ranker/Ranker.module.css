@@ -1,0 +1,13 @@
+.medal {
+    width: 30px;
+    text-align: center;
+}
+
+.number_position {
+    text-align: center;
+    margin-left: 10px;
+}
+
+.row {
+    vertical-align: center;
+}

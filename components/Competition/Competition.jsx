@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { ButtonWithLink, Ranking } from '..'
 import { getHumanReadableDate } from '../../utils/dates';
 
-const Competition = ({ id, start_at, end_at, participants, title, children, key, ...rest }) => {
+const Competition = ({ id, start_at, end_at, participants, title, key, ...rest }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [height, setHeight] = useState(0);
     const handleFilterOpening = () => {
@@ -24,14 +24,10 @@ const Competition = ({ id, start_at, end_at, participants, title, children, key,
                 <h3>{title}</h3>
                 <p>Início: {getHumanReadableDate(start_at)}</p>
                 <p>Fim: {getHumanReadableDate(end_at)}</p>
-                <p>{children}</p>
             </div>
             <div className={styles.hidden} style={{ height }}>
                 <div className={styles.ranking} ref={ref}>
-                    <Ranking />
-                    <div className={styles.buttonBox}>
-                        <ButtonWithLink link='/donated' text='Registre sua doação' />
-                    </div>
+                    <Ranking open={isOpen} competition_id={id}/>
                 </div>
             </div>
         </div >

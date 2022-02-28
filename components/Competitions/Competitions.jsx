@@ -28,7 +28,7 @@ const competitions = [
 const Competitions = () => (
     <div className={styles.list}>
         {competitions.map(({ id, title, start_at, end_at, participants, ...rest }) => (
-            <Competition title={title} id={id} start_at={start_at} end_at={end_at} participants={participants} />
+            <Competition key={id} title={title} id={id} start_at={start_at} end_at={end_at} participants={participants} />
         ))}
     </div>
 )

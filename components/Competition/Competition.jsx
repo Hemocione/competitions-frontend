@@ -1,8 +1,9 @@
 import styles from './Competition.module.css'
 import React, { useRef, useEffect, useState } from "react";
 import { ButtonWithLink, Ranking } from '..'
+import { getHumanReadableDate } from '../../utils/dates';
 
-const Competition = ({ children, title }) => {
+const Competition = ({ id, start_at, end_at, participants, title, children, key, ...rest }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [height, setHeight] = useState(0);
     const handleFilterOpening = () => {
@@ -20,8 +21,9 @@ const Competition = ({ children, title }) => {
     return (
         <div className={styles.wholeItem} >
             <div className={styles.show} onClick={handleFilterOpening}>
-                <img src="https://upload.travelawaits.com/ta/uploads/2021/04/aerial-view-of-rio-de-janeiroee4454.jpg" />
                 <h3>{title}</h3>
+                <p>Início: {getHumanReadableDate(start_at)}</p>
+                <p>Fim: {getHumanReadableDate(end_at)}</p>
                 <p>{children}</p>
             </div>
             <div className={styles.hidden} style={{ height }}>

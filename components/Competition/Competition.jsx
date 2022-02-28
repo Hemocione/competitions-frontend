@@ -1,6 +1,6 @@
 import styles from './Competition.module.css'
 import React, { useRef, useEffect, useState } from "react";
-import { ButtonWithLink, Ranking } from '..'
+import { Ranking } from '..'
 import { getHumanReadableDate } from '../../utils/dates';
 
 const Competition = ({ id, start_at, end_at, participants, title, key, ...rest }) => {
@@ -22,6 +22,7 @@ const Competition = ({ id, start_at, end_at, participants, title, key, ...rest }
         <div className={styles.wholeItem} >
             <div className={styles.show} onClick={handleFilterOpening}>
                 <h3>{title}</h3>
+                <p>Participantes: {participants}</p>
                 <p>Início: {getHumanReadableDate(start_at)}</p>
                 <p>Fim: {getHumanReadableDate(end_at)}</p>
             </div>

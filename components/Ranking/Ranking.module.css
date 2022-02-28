@@ -19,6 +19,8 @@ table.rtable {
 .buttonBox{
   background-color: rgb(255, 220, 220);
   padding: 15px;
-  text-align: center;
-  min-height: 50px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

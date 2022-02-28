@@ -7,17 +7,17 @@ const competitions = [
         "title": "Competição RJ",
         "start_at": "2022-01-01T09:00:00",
         "end_at": "2022-01-08T09:00:00",
-        "ranking": "FGV, Santo Agostinho, São Paulo"
+        "participants": "FGV, Santo Agostinho, São Paulo"
     },
     {
-        "id": "asasdasd",
+        "id": "asasdasdasas",
         "title": "Competição RJ",
         "start_at": "2022-01-01T09:00:00",
         "end_at": "2022-01-08T09:00:00",
         "participants": "FGV, Santo Agostinho, São Paulo"
     },
     {
-        "id": "asasdasd",
+        "id": "asasdassasasd",
         "title": "Competição RJ",
         "start_at": "2022-01-01T09:00:00",
         "end_at": "2022-01-08T09:00:00",

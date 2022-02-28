@@ -1,7 +1,16 @@
 import { CompetitionItem } from '..';
-import styles from './CompetitionItems.module.css'
+import styles from './Competitions.module.css'
 
-const CompetitionItems = () => (
+const apiResponse = [
+    {
+        "id": "asasdasd",
+        "title": "Competição 1",
+        "start_at": "2022-01-01T09:00:00",
+        "end_at": "2022-01-08T09:00:00"
+    }
+]
+
+const Competitions = () => (
     <div className={styles.list}>
         <CompetitionItem title="C1" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</CompetitionItem>
         <CompetitionItem title="C2" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</CompetitionItem>
@@ -11,4 +20,4 @@ const CompetitionItems = () => (
 )
 
 
-export default CompetitionItems
+export default Competitions

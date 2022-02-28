@@ -3,11 +3,7 @@
   overflow: auto;
   border-bottom: 2px solid rgb(185, 185, 185);
 }
-.show img {
-  margin: 0 15px 0 0;
-  max-height: 150px;
-  max-width: 200px;
-}
+
 .hidden{
   padding: 0px;
   overflow: hidden;

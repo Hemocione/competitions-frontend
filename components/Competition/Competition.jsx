@@ -10,7 +10,6 @@ const Competition = ({ id, start_at, end_at, participants, title, key, ...rest }
         setIsOpen((prev) => !prev);
     }
 
-
     const ref = useRef(null);
 
     useEffect(() => {

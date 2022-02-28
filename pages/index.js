@@ -1,7 +1,11 @@
-import { Competitions } from '../components';
+import { Competitions, Navbar } from '../components';
+import styles from './index.module.css'
 
 export default function Home() {
   return (
-    <Competitions />
+    <div className={styles.mainDiv}>
+      <Navbar />
+      <Competitions />
+    </div>
   )
 }

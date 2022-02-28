@@ -1,8 +1,8 @@
-import styles from './CompetitionItem.module.css'
+import styles from './Competition.module.css'
 import React, { useRef, useEffect, useState } from "react";
 import { ButtonWithLink, Ranking } from '..'
 
-const CompetitionItem = ({ children, title }) => {
+const Competition = ({ children, title }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [height, setHeight] = useState(0);
     const handleFilterOpening = () => {
@@ -36,4 +36,4 @@ const CompetitionItem = ({ children, title }) => {
     )
 }
 
-export default CompetitionItem
+export default Competition

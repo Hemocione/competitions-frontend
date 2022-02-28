@@ -1,21 +1,35 @@
-import { CompetitionItem } from '..';
+import { Competition } from '..';
 import styles from './Competitions.module.css'
 
-const apiResponse = [
+const competitions = [
     {
         "id": "asasdasd",
-        "title": "Competição 1",
+        "title": "Competição RJ",
         "start_at": "2022-01-01T09:00:00",
-        "end_at": "2022-01-08T09:00:00"
+        "end_at": "2022-01-08T09:00:00",
+        "participants": "FGV, Santo Agostinho, São Paulo"
+    },
+    {
+        "id": "asasdasd",
+        "title": "Competição RJ",
+        "start_at": "2022-01-01T09:00:00",
+        "end_at": "2022-01-08T09:00:00",
+        "participants": "FGV, Santo Agostinho, São Paulo"
+    },
+    {
+        "id": "asasdasd",
+        "title": "Competição RJ",
+        "start_at": "2022-01-01T09:00:00",
+        "end_at": "2022-01-08T09:00:00",
+        "participants": "FGV, Santo Agostinho, São Paulo"
     }
 ]
 
 const Competitions = () => (
     <div className={styles.list}>
-        <CompetitionItem title="C1" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</CompetitionItem>
-        <CompetitionItem title="C2" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</CompetitionItem>
-        <CompetitionItem title="C3" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</CompetitionItem>
-        <CompetitionItem title="C4" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</CompetitionItem>
+        {competitions.map(({ id, title, start_at, end_at, participants, ...rest }) => (
+            <Competition title={title} id={id} start_at={start_at} end_at={end_at} participants={participants} />
+        ))}
     </div>
 )
 

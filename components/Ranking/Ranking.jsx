@@ -29,12 +29,7 @@ const competition_ranks = [
     }
 ]
 
-const Ranking = ({open, competition_id, ...rest}) => {
-
-    if (!open) {
-        return null 
-    }
-
+const Ranking = ({ competition_id, ...rest }) => {
     return (
         <div>
             <table className={styles.rtable}>
@@ -43,7 +38,7 @@ const Ranking = ({open, competition_id, ...rest}) => {
                     <th>Time</th>
                     <th>Doações</th>
                 </tr>
-                {competition_ranks.map(({position, team_name, donation_count, ...rest}) => (
+                {competition_ranks.map(({ position, team_name, donation_count, ...rest }) => (
                     <Ranker position={position} team_name={team_name} donation_count={donation_count} key={team_name} />
                 ))}
             </table>

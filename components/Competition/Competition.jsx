@@ -27,7 +27,7 @@ const Competition = ({ id, start_at, end_at, participants, title, key, ...rest }
             </div>
             <div className={styles.hidden} style={{ height }}>
                 <div className={styles.ranking} ref={ref}>
-                    <Ranking open={isOpen} competition_id={id}/>
+                    <Ranking competition_id={id} />
                 </div>
             </div>
         </div >

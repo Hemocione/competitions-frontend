@@ -1,5 +1,6 @@
 import styles from './Ranking.module.css'
-import { Ranker, ButtonWithLink } from '..'
+import { DonationDialog, Ranker, SimpleButton } from '..'
+import { useState } from 'react'
 
 const competition_ranks = [
     {
@@ -30,6 +31,13 @@ const competition_ranks = [
 ]
 
 const Ranking = ({ competition_id, ...rest }) => {
+    const [openDialog, setOpenDialog] = useState(0)
+    const donationClickHandler = () => (
+        setOpenDialog(1)
+    )
+    const dialogCloseHandler = () => (
+        setOpenDialog(0)
+    )
     return (
         <div>
             <table className={styles.rtable}>
@@ -43,7 +51,8 @@ const Ranking = ({ competition_id, ...rest }) => {
                 ))}
             </table>
             <div className={styles.buttonBox}>
-                <ButtonWithLink link='/donated' text='Registre sua doação' />
+                <SimpleButton handleClick={donationClickHandler}>Registre sua doação</SimpleButton>
+                <DonationDialog open={openDialog} handleClose={dialogCloseHandler} />
             </div>
         </div>
     )

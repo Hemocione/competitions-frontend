@@ -1,6 +1,5 @@
 export { default as Competitions } from './Competitions/Competitions'
 export { default as Competition } from './Competition/Competition'
-export { default as Forms } from './Forms/Forms'
 export { default as Ranking } from './Ranking/Ranking'
 export { default as SimpleButton } from './SimpleButton/SimpleButton'
 export { default as Navbar } from './Navbar/Navbar'

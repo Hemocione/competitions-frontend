@@ -4,7 +4,7 @@ import { Ranking } from '..'
 import { getHumanReadableDate } from '../../utils/dates';
 import Image from 'next/image'
 
-const Competition = ({ id, start_at, end_at, participants, title, key, ...rest }) => {
+const Competition = ({ id, start_at, end_at, participants, title, key, available, ...rest }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [height, setHeight] = useState(0);
     const [arrowRotation, setArrowRotation] = useState(0)
@@ -53,7 +53,7 @@ const Competition = ({ id, start_at, end_at, participants, title, key, ...rest }
             </div>
             <div className={styles.hidden} style={{ height }}>
                 <div className={styles.ranking} ref={ref}>
-                    <Ranking competition_id={id} />
+                    <Ranking competition_id={id} ableToDonate={available}/>
                 </div>
             </div>
         </div >

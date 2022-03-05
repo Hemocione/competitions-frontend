@@ -25,6 +25,10 @@ const Competition = ({ id, start_at, end_at, participants, title, key, available
         }
     }, [isOpen]);
 
+    const getParticipants = (institutionsDict) => (
+        institutionsDict.map(({ name }) => (name))
+    )
+
     return (
         <div className={styles.wholeItem} >
             <div className={styles.show} onClick={handleFilterOpening}>
@@ -33,7 +37,7 @@ const Competition = ({ id, start_at, end_at, participants, title, key, available
                         {available ? <span className={styles.live} /> : null}
                         <h3 className={styles.title}>{title}</h3>
                     </div>
-                    <p>Participantes: {participants}</p>
+                    <p>Participantes: {getParticipants(participants)}</p>
                     <p>Início: {getHumanReadableDate(start_at)}</p>
                     <p>Fim: {getHumanReadableDate(end_at)}</p>
                     <CompetitionStatus available={available} />
@@ -53,7 +57,7 @@ const Competition = ({ id, start_at, end_at, participants, title, key, available
             </div>
             <div className={styles.hidden} style={{ height }}>
                 <div className={styles.ranking} ref={ref}>
-                    <Ranking competition_id={id} ableToDonate={available}/>
+                    <Ranking competition_id={id} ableToDonate={available} />
                 </div>
             </div>
         </div >

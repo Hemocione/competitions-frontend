@@ -1,40 +1,18 @@
 import { Competition } from '..';
 import styles from './Competitions.module.css'
 
-const competitions = [
-    {
-        "id": "asasdasd",
-        "title": "Batalha de Universidades SP seguimos fazendo um trabalho gigante auqi com meus amigos da turma do bairro alemanha e os inrmaos koff alucinados na bahia e guanabara com seus amigos alemnhanas jfhsdjfh  se sejhjshd es jhsdjhsj e s jshajhasj sasas  saa A ASDASDS",
-        "start_at": "2022-01-01T09:00:00",
-        "end_at": "2022-10-08T09:00:00",
-        "available": true,
-        "participants": "FGV, Santo Agostinho, São Paulo"
-    },
-    {
-        "id": "asasdasdasas",
-        "title": "Essa aqui é meme",
-        "start_at": "2022-01-01T09:00:00",
-        "end_at": "2022-01-08T09:00:00",
-        "available": false,
-        "participants": "FGV, Santo Agostinho, São Paulo"
-    },
-    {
-        "id": "asasdassasasd",
-        "title": "Competição RJ",
-        "start_at": "2022-01-01T09:00:00",
-        "end_at": "2022-01-08T09:00:00",
-        "available": false,
-        "participants": "FGV, Santo Agostinho, São Paulo"
-    }
-]
-
-const Competitions = () => (
-    <div className={styles.list}>
-        {competitions.map(({ id, title, start_at, end_at, participants, available, ...rest }) => (
-            <Competition key={id} title={title} id={id} start_at={start_at} end_at={end_at} participants={participants} available={available} />
-        ))}
-    </div>
-)
+const Competitions = ({ available, finished }) => {
+    return (
+        <div className={styles.list}>
+            {available.map(({ _id, name, startAt, endAt, institutions, ...rest }) => (
+                <Competition key={_id} title={name} id={_id} start_at={startAt} end_at={endAt} participants={institutions} available={true} />
+            ))}
+            {finished.map(({ _id, name, startAt, endAt, institutions, ...rest }) => (
+                <Competition key={_id} title={name} id={_id} start_at={startAt} end_at={endAt} participants={institutions} available={false} />
+            ))}
+        </div>
+    )
+}
 
 
 export default Competitions

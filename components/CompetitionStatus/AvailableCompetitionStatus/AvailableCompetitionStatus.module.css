@@ -1,0 +1,13 @@
+.available {
+  background-color: rgba(51, 217, 178, 1);
+  color: #FFFFFF;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: larger;
+  font-weight: bold;
+  max-width: 200px;
+}

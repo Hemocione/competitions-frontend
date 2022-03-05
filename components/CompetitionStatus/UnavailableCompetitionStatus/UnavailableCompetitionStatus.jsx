@@ -1,8 +1,10 @@
+import styles from './UnavailableCompetitionStatus.module.css'
+
 const UnavailableCompetitionStatus = () => {
   return (
-    <div>
-      <p>Indisponível</p>
-    </div >
+    <p className={styles.finalized}>
+      FINALIZADO
+    </p>
   )
 }
 

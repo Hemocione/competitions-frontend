@@ -1,7 +1,9 @@
+import styles from './AvailableCompetitionStatus.module.css'
+
 const AvailableCompetitionStatus = () => {
   return (
     <div>
-      <p>Disponível</p>
+      <p className={styles.available}>ACONTECENDO</p>
     </div >
   )
 }

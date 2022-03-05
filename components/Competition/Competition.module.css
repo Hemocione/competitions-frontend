@@ -1,10 +1,13 @@
-.show{
+.show {
   padding: 10px;
   overflow: auto;
   border-bottom: 2px solid rgb(185, 185, 185);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.hidden{
+.hidden {
   padding: 0px;
   overflow: hidden;
   transition: height 0.3s ease-in-out;

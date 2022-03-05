@@ -28,12 +28,11 @@ const Competition = ({ id, start_at, end_at, participants, title, key, available
     return (
         <div className={styles.wholeItem} >
             <div className={styles.show} onClick={handleFilterOpening}>
-                <div style={
-                    {
-                        marginLeft: '10px'
-                    }
-                }>
-                    <h3>{title}</h3>
+                <div className={styles.dataContainer}>
+                    <div className={styles.titleContainer}>
+                        {available ? <span className={styles.live} /> : null}
+                        <h3 className={styles.title}>{title}</h3>
+                    </div>
                     <p>Participantes: {participants}</p>
                     <p>Início: {getHumanReadableDate(start_at)}</p>
                     <p>Fim: {getHumanReadableDate(end_at)}</p>

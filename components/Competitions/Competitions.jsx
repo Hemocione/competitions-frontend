@@ -4,7 +4,7 @@ import styles from './Competitions.module.css'
 const competitions = [
     {
         "id": "asasdasd",
-        "title": "Batalha de Universidades SP",
+        "title": "Batalha de Universidades SP seguimos fazendo um trabalho gigante auqi com meus amigos da turma do bairro alemanha e os inrmaos koff alucinados na bahia e guanabara com seus amigos alemnhanas jfhsdjfh  se sejhjshd es jhsdjhsj e s jshajhasj sasas  saa A ASDASDS",
         "start_at": "2022-01-01T09:00:00",
         "end_at": "2022-10-08T09:00:00",
         "available": true,

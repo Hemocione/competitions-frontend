@@ -1,6 +1,6 @@
 import styles from './Competition.module.css'
 import React, { useRef, useEffect, useState } from "react";
-import { Ranking } from '..'
+import { Ranking, CompetitionStatus } from '..'
 import { getHumanReadableDate } from '../../utils/dates';
 import Image from 'next/image'
 
@@ -37,6 +37,7 @@ const Competition = ({ id, start_at, end_at, participants, title, key, available
                     <p>Participantes: {participants}</p>
                     <p>Início: {getHumanReadableDate(start_at)}</p>
                     <p>Fim: {getHumanReadableDate(end_at)}</p>
+                    <CompetitionStatus available={available} />
                 </div>
                 <div style={
                     {

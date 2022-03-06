@@ -11,16 +11,19 @@ export default function Home({ availableCompetitions, finishedCompetitions }) {
 }
 
 export async function getStaticProps() {
-  const res1 = await fetch(process.env.BACKEND_URL + 'competitions?available=true')
-  const availableCompetitions = await res1.json()
-
-  const res2 = await fetch(process.env.BACKEND_URL + 'competitions?available=false')
-  const finishedCompetitions = await res2.json()
+  const [availableRes, finishedRes] = await Promise.all([
+    fetch(`${process.env.BACKEND_URL}/competitions?available=true`),
+    fetch(`${process.env.BACKEND_URL}/competitions?available=false`)
+  ]);
+  const [availableCompetitions, finishedCompetitions] = await Promise.all([
+    availableRes.json(),
+    finishedRes.json()
+  ]);
 
   return {
     props: {
       availableCompetitions,
       finishedCompetitions
-    },
+    }
   }
 }

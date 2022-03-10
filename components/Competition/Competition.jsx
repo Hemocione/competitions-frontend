@@ -4,7 +4,7 @@ import { Ranking, CompetitionStatus } from '..'
 import { getHumanReadableDate } from '../../utils/dates';
 import Image from 'next/image'
 
-const Competition = ({ id, start_at, end_at, participants, title, key, available, ...rest }) => {
+const Competition = ({ id, start_at, end_at, participants, title, available, ...rest }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [height, setHeight] = useState(0);
     const [arrowRotation, setArrowRotation] = useState(0)
@@ -25,10 +25,6 @@ const Competition = ({ id, start_at, end_at, participants, title, key, available
         }
     }, [isOpen]);
 
-    const getParticipants = (institutionsDict) => (
-        institutionsDict.map(({ name }) => (name))
-    )
-
     return (
         <div className={styles.wholeItem} >
             <div className={styles.show} onClick={handleFilterOpening}>
@@ -37,7 +33,7 @@ const Competition = ({ id, start_at, end_at, participants, title, key, available
                         {available ? <span className={styles.live} /> : null}
                         <h3 className={styles.title}>{title}</h3>
                     </div>
-                    <p>Participantes: {getParticipants(participants)}</p>
+                    <p>Participantes: {participants}</p>
                     <p>Início: {getHumanReadableDate(start_at)}</p>
                     <p>Fim: {getHumanReadableDate(end_at)}</p>
                     <CompetitionStatus available={available} />

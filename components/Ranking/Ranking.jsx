@@ -31,12 +31,12 @@ const competition_ranks = [
 ]
 
 const Ranking = ({ competition_id, ableToDonate, ...rest }) => {
-    const [openDialog, setOpenDialog] = useState(0)
+    const [openDialog, setOpenDialog] = useState(false)
     const donationClickHandler = () => (
-        setOpenDialog(1)
+        setOpenDialog(true)
     )
     const dialogCloseHandler = () => (
-        setOpenDialog(0)
+        setOpenDialog(false)
     )
     return (
         <div>
@@ -51,9 +51,9 @@ const Ranking = ({ competition_id, ableToDonate, ...rest }) => {
                 ))}
             </table>
             {ableToDonate ? <div className={styles.buttonBox}>
-                    <SimpleButton handleClick={donationClickHandler}>Registre sua doação</SimpleButton>
-                    <DonationDialog open={openDialog} handleClose={dialogCloseHandler} />
-                </div> : null }
+                <SimpleButton handleClick={donationClickHandler}>Registre sua doação</SimpleButton>
+                <DonationDialog open={openDialog} handleClose={dialogCloseHandler} />
+            </div> : null}
         </div>
     )
 }

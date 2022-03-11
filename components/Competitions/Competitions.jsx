@@ -9,7 +9,7 @@ const Competitions = ({ available, finished }) => {
             const script = document.createElement("script")
             script.id = "recaptcha-key"
             script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_SITE_KEY}`
-            script.onload = _ => console.log('captcha loaded')
+            script.onload = () => console.log('captcha loaded')
             document.body.appendChild(script)
         }
     }, []);

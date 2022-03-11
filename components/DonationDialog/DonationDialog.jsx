@@ -1,5 +1,5 @@
 import styles from './DonationDialog.module.css'
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -9,7 +9,28 @@ import Button from '@material-ui/core/Button';
 import TextField from '@mui/material/TextField';
 
 const DonationDialog = ({ open, handleClose }) => {
+    const [loading, setLoading] = useState(false)
 
+    const handleOnSend = e => {
+        e.preventDefault();
+        setLoading(true);
+        window.grecaptcha.ready(() => {
+            window.grecaptcha.execute(SITE_KEY, { action: 'submit' }).then(token => {
+                submitToken(token);
+            });
+        });
+    }
+    const submitToken = (token) => {
+        // call a backend API to verify reCAPTCHA response
+        fetch(`${process.env.BACKEND_URL}/verify`, {
+            method: 'POST',
+            body: JSON.stringify({
+                "g-recaptcha-response": token
+            })
+        }).then(res => res.json()).then(res => {
+            setLoading(false);
+        });
+    }
     return (
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle>
@@ -51,7 +72,7 @@ const DonationDialog = ({ open, handleClose }) => {
                 <Button onClick={handleClose} color="primary">
                     Cancelar
                 </Button>
-                <Button onClick={handleClose} color="primary" autoFocus>
+                <Button onClick={handleOnSend} color="primary" autoFocus>
                     Enviar
                 </Button>
             </DialogActions>

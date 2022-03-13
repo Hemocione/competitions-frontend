@@ -1,14 +1,15 @@
 import axios from "axios";
-const { BACKEND_URL } = process.env;
+const { NEXT_PUBLIC_BACKEND_URL } = process.env;
 
 const apiClient = axios.create(
   {
-    baseURL: BACKEND_URL || "http://localhost:8080",
+    baseURL: NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080",
     responseType: 'json'
   }
 )
 
 const getCompetitionRanking = (id) => {
+  console.log(NEXT_PUBLIC_BACKEND_URL)
   return (apiClient.get(`/competitions/${id}/ranking`))
 }
 

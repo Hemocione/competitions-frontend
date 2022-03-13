@@ -11,7 +11,7 @@ export default function Home({competitions}) {
 }
 
 export async function getServerSideProps() {
-  const url = `${process.env.BACKEND_URL}/competitions`
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/competitions`
   const competitionsRes = await fetch(url)
   const competitions = await competitionsRes.json()
 

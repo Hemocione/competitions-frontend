@@ -33,8 +33,8 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
                         {status === 2 ? <span className={styles.live} /> : null}
                         <h3 className={styles.title}>{title}</h3>
                     </div>
-                    <p>Início: {getHumanReadableDate(start_at)}</p>
-                    <p>Fim: {getHumanReadableDate(end_at)}</p>
+                    <p className={styles.date}>Início: <b>{getHumanReadableDate(start_at)}</b></p>
+                    <p className={styles.date}>Fim: <b>{getHumanReadableDate(end_at)}</b></p>
                     <CompetitionStatus status={status} />
                 </div>
                 <div style={
@@ -52,7 +52,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
             </div>
             <div className={styles.hidden} style={{ height }}>
                 <div className={styles.ranking} ref={ref}>
-                    <Ranking competition_id={id} ableToDonate={status===2} />
+                    <Ranking isOpen={isOpen} competition_id={id} ableToDonate={status===2} />
                 </div>
             </div>
         </div >

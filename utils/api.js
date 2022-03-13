@@ -12,4 +12,13 @@ const getCompetitionRanking = (id) => {
   return (apiClient.get(`/competitions/${id}/ranking`))
 }
 
-export { getCompetitionRanking }
+const registerDonation = (competitionId, competitionTeamId, user_email, user_name) => {
+  return (apiClient.post(`/competitions/${competitionId}/donations`, {
+    competitionTeamId: competitionTeamId,
+    user_email: user_email,
+    user_name: user_name,
+    competitionId: competitionId
+  }))
+}
+
+export { getCompetitionRanking, registerDonation }

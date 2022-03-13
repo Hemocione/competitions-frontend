@@ -7,9 +7,21 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
-const DonationDialog = ({ open, handleClose }) => {
+const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) => {
     const [loading, setLoading] = useState(false)
+    const [donationData, setDonationData] = useState({
+        competitionId: competitionId,
+        competitionTeamId: null,
+        user_name: null,
+        user_email: null
+    })
+
+    const handleChange = (event) => {
+        setDonationData({donationData, [event.target.name]: event.target.value})
+    }
 
     const handleOnSend = e => {
         e.preventDefault();
@@ -59,14 +71,18 @@ const DonationDialog = ({ open, handleClose }) => {
                     fullWidth
                     variant="standard"
                 />
-                <TextField
-                    autoFocus
-                    margin="dense"
-                    id="time"
+                <Select
+                    id="team-selector"
+                    value={donationData.competitionTeamId}
                     label="Time"
+                    onChange={handleChange}
                     fullWidth
-                    variant="standard"
-                />
+                    >
+                    <MenuItem value=""><em>Nenhum</em></MenuItem>
+                    {competitionTeams.map(competitionTeam => (
+                        <MenuItem value={competitionTeam.id} key={competitionTeam.id}>{competitionTeam.team.name}</MenuItem>
+                    ))}
+                </Select>
             </div>
             <DialogActions>
                 <Button onClick={handleClose} color="primary">

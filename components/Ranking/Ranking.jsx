@@ -24,7 +24,7 @@ const Ranking = ({ competition_id, ableToDonate, ranking, ...rest }) => {
             </table>
             {ableToDonate ? <div className={styles.buttonBox}>
                 <SimpleButton handleClick={donationClickHandler}>Registre sua doação</SimpleButton>
-                <DonationDialog open={openDialog} handleClose={dialogCloseHandler} />
+                <DonationDialog open={openDialog} handleClose={dialogCloseHandler} competitionTeams={ranking} competitionId={competition_id} />
             </div> : null}
         </div>
     )

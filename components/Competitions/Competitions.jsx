@@ -2,7 +2,7 @@ import { Competition } from '..';
 import styles from './Competitions.module.css'
 import { useEffect } from 'react';
 
-const Competitions = ({ available, finished }) => {
+const Competitions = ({ competitions }) => {
     useEffect(() => {
         const scriptExist = document.getElementById("recaptcha-key");
         if (!scriptExist) {
@@ -13,13 +13,11 @@ const Competitions = ({ available, finished }) => {
             document.body.appendChild(script)
         }
     }, []);
+
     return (
         <div className={styles.list}>
-            {available.map(({ _id, name, startAt, endAt, institutions, ...rest }) => (
-                <Competition key={_id} title={name} id={_id} start_at={startAt} end_at={endAt} participants={institutions} available={true} />
-            ))}
-            {finished.map(({ _id, name, startAt, endAt, institutions, ...rest }) => (
-                <Competition key={_id} title={name} id={_id} start_at={startAt} end_at={endAt} participants={institutions} available={false} />
+            {competitions.map(({ id, name, start_at, end_at, status, ...rest }) => (
+                <Competition key={id} title={name} id={id} start_at={start_at} end_at={end_at} status={status} />
             ))}
         </div>
     )

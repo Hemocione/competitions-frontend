@@ -4,7 +4,7 @@ import { Ranking, CompetitionStatus } from '..'
 import { getHumanReadableDate } from '../../utils/dates';
 import Image from 'next/image'
 
-const Competition = ({ id, start_at, end_at, participants, title, available, ...rest }) => {
+const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [height, setHeight] = useState(0);
     const [arrowRotation, setArrowRotation] = useState(0)
@@ -30,13 +30,12 @@ const Competition = ({ id, start_at, end_at, participants, title, available, ...
             <div className={styles.show} onClick={handleFilterOpening}>
                 <div className={styles.dataContainer}>
                     <div className={styles.titleContainer}>
-                        {available ? <span className={styles.live} /> : null}
+                        {status === 2 ? <span className={styles.live} /> : null}
                         <h3 className={styles.title}>{title}</h3>
                     </div>
-                    <p>Participantes: {participants}</p>
                     <p>Início: {getHumanReadableDate(start_at)}</p>
                     <p>Fim: {getHumanReadableDate(end_at)}</p>
-                    <CompetitionStatus available={available} />
+                    <CompetitionStatus status={status} />
                 </div>
                 <div style={
                     {
@@ -53,7 +52,7 @@ const Competition = ({ id, start_at, end_at, participants, title, available, ...
             </div>
             <div className={styles.hidden} style={{ height }}>
                 <div className={styles.ranking} ref={ref}>
-                    <Ranking competition_id={id} ableToDonate={available} />
+                    <Ranking competition_id={id} ableToDonate={status===2} />
                 </div>
             </div>
         </div >

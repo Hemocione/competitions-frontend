@@ -30,7 +30,7 @@ const competition_ranks = [
     }
 ]
 
-const Ranking = ({ competition_id, ableToDonate, ...rest }) => {
+const Ranking = ({ competition_id, ableToDonate, ranking, ...rest }) => {
     const [openDialog, setOpenDialog] = useState(false)
     const donationClickHandler = () => (
         setOpenDialog(true)
@@ -46,8 +46,8 @@ const Ranking = ({ competition_id, ableToDonate, ...rest }) => {
                     <th>Time</th>
                     <th>Doações</th>
                 </tr>
-                {competition_ranks.map(({ position, team_name, donation_count, ...rest }) => (
-                    <Ranker position={position} team_name={team_name} donation_count={donation_count} key={team_name} />
+                {ranking.map((rank, index) => (
+                    <Ranker position={index+1} team_name={rank.team.name} donation_count={rank.donation_count} key={rank.id} />
                 ))}
             </table>
             {ableToDonate ? <div className={styles.buttonBox}>

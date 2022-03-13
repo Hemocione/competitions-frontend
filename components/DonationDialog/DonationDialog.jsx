@@ -54,7 +54,7 @@ const DonationDialog = ({ open, handleClose }) => {
                     autoFocus
                     margin="dense"
                     id="email"
-                    label="Email Address"
+                    label="Email"
                     type="email"
                     fullWidth
                     variant="standard"

@@ -11,7 +11,11 @@ const Ranking = ({ competition_id, ableToDonate, ranking, ...rest }) => {
         setOpenDialog(false)
     )
     return (
-        <div>
+        <div style={{marginBottom: '36px'}}>
+            {ableToDonate ? <div className={styles.buttonBox}>
+                <SimpleButton handleClick={donationClickHandler}>Registre sua doação</SimpleButton>
+                <DonationDialog open={openDialog} handleClose={dialogCloseHandler} competitionTeams={ranking} competitionId={competition_id} />
+            </div> : null}
             <table className={styles.rtable}>
                 <tr>
                     <th>Posição</th>
@@ -22,10 +26,6 @@ const Ranking = ({ competition_id, ableToDonate, ranking, ...rest }) => {
                     <Ranker position={index+1} team_name={rank.team.name} donation_count={rank.donation_count} key={rank.id} />
                 ))}
             </table>
-            {ableToDonate ? <div className={styles.buttonBox}>
-                <SimpleButton handleClick={donationClickHandler}>Registre sua doação</SimpleButton>
-                <DonationDialog open={openDialog} handleClose={dialogCloseHandler} competitionTeams={ranking} competitionId={competition_id} />
-            </div> : null}
         </div>
     )
 }

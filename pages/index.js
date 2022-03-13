@@ -11,7 +11,8 @@ export default function Home({competitions}) {
 }
 
 export async function getServerSideProps() {
-  const competitionsRes = await fetch(`https://hemo-competitions-back-dev.herokuapp.com/competitions`)
+  const url = `${process.env.BACKEND_URL}/competitions`
+  const competitionsRes = await fetch(url)
   const competitions = await competitionsRes.json()
 
   return { props: { competitions: competitions } }

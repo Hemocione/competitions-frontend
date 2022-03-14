@@ -33,7 +33,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
                 setLoadingRanking(2)
             }).catch((error) => {
                 setLoadingRanking(0)
-              })
+            })
         } else {
             setHeight(0)
             setArrowRotation(0)
@@ -60,7 +60,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
                         marginLeft: '20px'
                     }
                 }>
-                    <CircularProgress style={{'color': 'rgb(224, 14, 22)'}} />
+                    <CircularProgress style={{ 'color': 'rgb(224, 14, 22)' }} />
                 </div> : <div style={
                     {
                         transform: `rotate(${arrowRotation}deg)`,
@@ -76,7 +76,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
             </div>
             <div className={styles.hidden} style={{ height }}>
                 <div className={styles.ranking} ref={ref}>
-                    <Ranking competition_id={id} ranking={ranking} ableToDonate={status===2} />
+                    <Ranking competition_id={id} ranking={ranking} ableToDonate={status === 2} />
                 </div>
             </div>
         </div >

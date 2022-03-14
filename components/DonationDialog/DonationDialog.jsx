@@ -6,6 +6,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
@@ -14,13 +16,14 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
     const [loading, setLoading] = useState(false)
     const [donationData, setDonationData] = useState({
         competitionId: competitionId,
-        competitionTeamId: null,
-        user_name: null,
-        user_email: null
+        competitionTeamId: '',
+        user_name: '',
+        user_email: ''
     })
 
     const handleChange = (event) => {
-        setDonationData({donationData, [event.target.name]: event.target.value})
+        console.log('aqui')
+        setDonationData({ ...donationData, competitionTeamId: event.target.value })
     }
 
     const handleOnSend = e => {
@@ -44,7 +47,7 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
         });
     }
     return (
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog disableEnforceFocus open={open} onClose={handleClose}>
             <DialogTitle>
                 Registro
             </DialogTitle>
@@ -71,18 +74,23 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                     fullWidth
                     variant="standard"
                 />
-                <Select
-                    id="team-selector"
-                    value={donationData.competitionTeamId}
-                    label="Time"
-                    onChange={handleChange}
-                    fullWidth
+                <br />
+                <br />
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Time</InputLabel>
+                    <Select
+                        id="team-selector"
+                        value={donationData.competitionTeamId}
+                        label="Time"
+                        onChange={handleChange}
+                        fullWidth
                     >
-                    <MenuItem value=""><em>Nenhum</em></MenuItem>
-                    {competitionTeams.map(competitionTeam => (
-                        <MenuItem value={competitionTeam.id} key={competitionTeam.id}>{competitionTeam.team.name}</MenuItem>
-                    ))}
-                </Select>
+                        <MenuItem value='Nenhum'><em>Nenhum</em></MenuItem>
+                        {competitionTeams.map(competitionTeam => (
+                            <MenuItem value={competitionTeam.id} key={competitionTeam.id}>{competitionTeam.team.name}</MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
             </div>
             <DialogActions>
                 <Button onClick={handleClose} color="primary">

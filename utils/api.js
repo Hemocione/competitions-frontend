@@ -9,7 +9,6 @@ const apiClient = axios.create(
 )
 
 const getCompetitionRanking = (id) => {
-  console.log(NEXT_PUBLIC_BACKEND_URL)
   return (apiClient.get(`/competitions/${id}/ranking`))
 }
 

@@ -53,6 +53,11 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                 "competitionTeamId": donationData.competitionTeamId,
             })
         }).then(res => res.json()).then(res => {
+            if (res.status != 201) {
+                alert('ERRO')
+            } else {
+                handleClose()
+            }
             setLoading(false);
         });
     }

@@ -16,36 +16,48 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
     const [loading, setLoading] = useState(false)
     const [donationData, setDonationData] = useState({
         competitionId: competitionId,
-        competitionTeamId: '',
+        competitionTeamId: 'Nenhum',
         user_name: '',
         user_email: ''
     })
 
-    const handleChange = (event) => {
+    const handleTeamChange = (event) => {
         console.log('aqui')
         setDonationData({ ...donationData, competitionTeamId: event.target.value })
+    }
+    const handleNameChange = (event) => {
+        setDonationData({ ...donationData, user_name: event.target.value })
+    }
+    const handleEmailChange = (event) => {
+        setDonationData({ ...donationData, user_email: event.target.value })
     }
 
     const handleOnSend = e => {
         e.preventDefault();
         setLoading(true);
         window.grecaptcha.ready(() => {
-            window.grecaptcha.execute(SITE_KEY, { action: 'submit' }).then(token => {
-                submitToken(token);
+            window.grecaptcha.execute(process.env.NEXT_PUBLIC_SITE_KEY, { action: 'submit' }).then(token => {
+                submitWithToken(token);
             });
         });
     }
-    const submitToken = (token) => {
+    const submitWithToken = (token) => {
         // call a backend API to verify reCAPTCHA response
-        fetch(`${process.env.BACKEND_URL}/verify`, {
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/donations`, {
             method: 'POST',
             body: JSON.stringify({
-                "g-recaptcha-response": token
+                "g-recaptcha-response": token,
+                "id": donationData.competitionId,
+                "user_name": donationData.user_name,
+                "user_email": donationData.user_email,
+                "competitionTeamId": donationData.competitionTeamId,
             })
         }).then(res => res.json()).then(res => {
             setLoading(false);
         });
     }
+    const canSend = donationData.user_name != '' && donationData.user_email != ''
+    console.log(canSend)
     return (
         <Dialog disableEnforceFocus open={open} onClose={handleClose}>
             <DialogTitle>
@@ -58,6 +70,10 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
             </DialogContent>
             <div className={styles.textFieldsContainer}>
                 <TextField
+                    onChange={handleNameChange}
+                    value={donationData.user_name}
+                    error={donationData.user_name == ''}
+                    helperText={donationData.user_name == '' && 'Campo obrigatório'}
                     autoFocus
                     margin="dense"
                     id="name"
@@ -66,6 +82,10 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                     variant="standard"
                 />
                 <TextField
+                    onChange={handleEmailChange}
+                    value={donationData.user_email}
+                    error={donationData.user_email == ''}
+                    helperText={donationData.user_email == '' && 'Campo obrigatório'}
                     autoFocus
                     margin="dense"
                     id="email"
@@ -82,7 +102,7 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                         id="team-selector"
                         value={donationData.competitionTeamId}
                         label="Time"
-                        onChange={handleChange}
+                        onChange={handleTeamChange}
                         fullWidth
                     >
                         <MenuItem value='Nenhum'><em>Nenhum</em></MenuItem>
@@ -96,8 +116,8 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                 <Button onClick={handleClose} color="primary">
                     Cancelar
                 </Button>
-                <Button onClick={handleOnSend} color="primary" autoFocus>
-                    Enviar
+                <Button disabled={!canSend} onClick={handleOnSend} color="primary" autoFocus>
+                    {loading ? 'Enviando...' : 'Enviar'}
                 </Button>
             </DialogActions>
         </Dialog>

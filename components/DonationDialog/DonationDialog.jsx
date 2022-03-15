@@ -43,7 +43,9 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
     }
     const submitWithToken = (token) => {
         // call a backend API to verify reCAPTCHA response
-        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/donations`, {
+        const headers = new Headers({ "Content-Type": 'application/json' });
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/competitions/${competitionId}/donations`, {
+            headers: headers,
             method: 'POST',
             body: JSON.stringify({
                 "g-recaptcha-response": token,
@@ -51,7 +53,7 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                 "user_name": donationData.user_name,
                 "user_email": donationData.user_email,
                 "competitionTeamId": donationData.competitionTeamId,
-            })
+            },)
         }).then(res => res.json()).then(res => {
             if (res.status != 201) {
                 alert('ERRO')

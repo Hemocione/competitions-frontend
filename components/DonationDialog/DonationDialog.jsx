@@ -1,5 +1,6 @@
 import styles from './DonationDialog.module.css'
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
+import { registerDonation } from '../../utils/api';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -16,13 +17,13 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
     const [loading, setLoading] = useState(false)
     const [donationData, setDonationData] = useState({
         competitionId: competitionId,
-        competitionTeamId: 'Nenhum',
+        competitionTeamId: 0,
         user_name: '',
         user_email: ''
     })
+    const [errorText, setErrorText] = useState('')
 
     const handleTeamChange = (event) => {
-        console.log('aqui')
         setDonationData({ ...donationData, competitionTeamId: event.target.value })
     }
     const handleNameChange = (event) => {
@@ -37,34 +38,24 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
         setLoading(true);
         window.grecaptcha.ready(() => {
             window.grecaptcha.execute(process.env.NEXT_PUBLIC_SITE_KEY, { action: 'submit' }).then(token => {
-                submitWithToken(token);
+                return(submitWithToken(token))
             });
         });
     }
     const submitWithToken = (token) => {
-        // call a backend API to verify reCAPTCHA response
-        const headers = new Headers({ "Content-Type": 'application/json' });
-        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/competitions/${competitionId}/donations`, {
-            headers: headers,
-            method: 'POST',
-            body: JSON.stringify({
-                "g-recaptcha-response": token,
-                "id": donationData.competitionId,
-                "user_name": donationData.user_name,
-                "user_email": donationData.user_email,
-                "competitionTeamId": donationData.competitionTeamId,
-            },)
-        }).then(res => res.json()).then(res => {
-            if (res.status != 201) {
-                alert('ERRO')
-            } else {
-                handleClose()
+        registerDonation({...donationData, token: token}).then((response) => {
+            if (response.status === 201) {
+                return handleClose();
             }
             setLoading(false);
-        });
+            setErrorText(response.data.message);
+        }).catch((error) => {
+            setLoading(false);
+            setErrorText("Ocorreu um erro inesperado. Por favor, tente novamente.")
+        })
     }
-    const canSend = donationData.user_name != '' && donationData.user_email != ''
-    console.log(canSend)
+
+    const canSend = donationData.user_name != '' && donationData.user_email != '' && donationData.competitionTeamId != 0
     return (
         <Dialog disableEnforceFocus open={open} onClose={handleClose}>
             <DialogTitle>
@@ -94,6 +85,7 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                     error={donationData.user_email == ''}
                     helperText={donationData.user_email == '' && 'Campo obrigatório'}
                     autoFocus
+                    required
                     margin="dense"
                     id="email"
                     label="Email"
@@ -107,12 +99,11 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                     <InputLabel id="demo-simple-select-label">Time</InputLabel>
                     <Select
                         id="team-selector"
-                        value={donationData.competitionTeamId}
+                        placeholder='Time'
                         label="Time"
                         onChange={handleTeamChange}
                         fullWidth
                     >
-                        <MenuItem value='Nenhum'><em>Nenhum</em></MenuItem>
                         {competitionTeams.map(competitionTeam => (
                             <MenuItem value={competitionTeam.id} key={competitionTeam.id}>{competitionTeam.team.name}</MenuItem>
                         ))}
@@ -127,6 +118,7 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                     {loading ? 'Enviando...' : 'Enviar'}
                 </Button>
             </DialogActions>
+            <p style={{ color: "#FF0000", textAlign: 'center', marginTop: 0, marginBottom: '1.5em' }}>{errorText}</p>
         </Dialog>
     )
 }

@@ -15,12 +15,13 @@ const getCompetitionRanking = (id) => {
   return (apiClient.get(`/competitions/${id}/ranking`))
 }
 
-const registerDonation = (competitionId, competitionTeamId, user_email, user_name) => {
+const registerDonation = ({competitionId, competitionTeamId, user_email, user_name, token}) => {
   return (apiClient.post(`/competitions/${competitionId}/donations`, {
-    competitionTeamId: competitionTeamId,
-    user_email: user_email,
-    user_name: user_name,
-    competitionId: competitionId
+    'g-recaptcha-response': token,
+    'competitionTeamId': competitionTeamId,
+    'user_email': user_email,
+    'user_name': user_name,
+    'competitionId': competitionId
   }))
 }
 

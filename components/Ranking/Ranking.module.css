@@ -11,8 +11,10 @@ table.rtable {
 .rtable th{
   text-align: left;
   padding: 9px;
+  background-color: #D1151A;
+  color: #FFFFFF;
 }
-.rtable tr:nth-child(even) {
+.rtable tr:nth-child(odd) {
   background-color: #dddddd;
 }
 

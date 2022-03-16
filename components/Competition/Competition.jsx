@@ -41,7 +41,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
     }, [loadingRanking, id]);
 
     return (
-        <div className={styles.wholeItem} >
+        <div className={styles.wholeItem} key={id}>
             <div className={styles.show} onClick={handleFilterOpening}>
                 <div className={styles.dataContainer}>
                     <div className={styles.titleContainer}>

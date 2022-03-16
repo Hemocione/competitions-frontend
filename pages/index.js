@@ -11,7 +11,6 @@ export default function Home({competitions}) {
   )
 }
 
-// please work
 export const getServerSideProps = async () => {
   const competitionsRes = await getCompetitions()
   const competitions = await competitionsRes.data

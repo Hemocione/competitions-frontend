@@ -11,7 +11,7 @@ export default function Home({competitions}) {
 }
 
 export const getStaticProps = async () => {
-  const url = new URL('/competitions', process.env.PRIVATE_BACKEND_URL);
+  const url = new URL('/competitions', process.env.NEXT_PUBLIC_BACKEND_URL);
   const headers = new Headers({
     'Content-Type': 'application/json'
   })

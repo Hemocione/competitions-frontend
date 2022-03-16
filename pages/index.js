@@ -11,8 +11,8 @@ export default function Home({competitions}) {
   )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const competitionsRes = await getCompetitions()
   const competitions = await competitionsRes.data
-  return { props: { competitions: competitions }, revalidate: 300 }
+  return { props: { competitions: competitions } }
 }

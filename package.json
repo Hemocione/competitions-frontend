@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "echo $NEXT_PUBLIC_BACKEND_URL; echo $NEXT_PRIVATE_BACKEND_URL; next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },

@@ -10,8 +10,10 @@ export default function Home({competitions}) {
   )
 }
 
-export async function getServerSideProps() {
-  const competitionsRes = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/competitions`)
+export const getServerSideProps = async () => {
+  const url = new URL('/competitions', process.env.NEXT_PUBLIC_BACKEND_URL);
+  console.log(url)
+  const competitionsRes = await fetch(url)
   const competitions = await competitionsRes.json()
 
   return { props: { competitions: competitions } }

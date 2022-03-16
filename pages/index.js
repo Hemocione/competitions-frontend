@@ -15,7 +15,8 @@ export const getServerSideProps = async () => {
   const competitionsRes = await fetch(url, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Headers':'*'
     }
   })
   const competitions = await competitionsRes.json()

@@ -11,6 +11,10 @@ const apiClient = axios.create(
   }
 )
 
+const getCompetitions = () => {
+  return (apiClient.get(`/competitions`))
+}
+
 const getCompetitionRanking = (id) => {
   return (apiClient.get(`/competitions/${id}/ranking`))
 }
@@ -25,4 +29,4 @@ const registerDonation = ({competitionId, competitionTeamId, user_email, user_na
   }))
 }
 
-export { getCompetitionRanking, registerDonation }
+export { getCompetitionRanking, registerDonation, getCompetitions }

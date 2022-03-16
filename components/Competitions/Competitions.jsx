@@ -1,37 +1,27 @@
 import { Competition } from '..';
 import styles from './Competitions.module.css'
+import { useEffect } from 'react';
 
-const competitions = [
-    {
-        "id": "asasdasd",
-        "title": "Competição RJ",
-        "start_at": "2022-01-01T09:00:00",
-        "end_at": "2022-01-08T09:00:00",
-        "participants": "FGV, Santo Agostinho, São Paulo"
-    },
-    {
-        "id": "asasdasdasas",
-        "title": "Competição RJ",
-        "start_at": "2022-01-01T09:00:00",
-        "end_at": "2022-01-08T09:00:00",
-        "participants": "FGV, Santo Agostinho, São Paulo"
-    },
-    {
-        "id": "asasdassasasd",
-        "title": "Competição RJ",
-        "start_at": "2022-01-01T09:00:00",
-        "end_at": "2022-01-08T09:00:00",
-        "participants": "FGV, Santo Agostinho, São Paulo"
-    }
-]
+const Competitions = ({ competitions }) => {
+    useEffect(() => {
+        const scriptExist = document.getElementById("recaptcha-key");
+        if (!scriptExist) {
+            const script = document.createElement("script")
+            script.id = "recaptcha-key"
+            script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_SITE_KEY}`
+            script.onload = () => console.log('captcha loaded')
+            document.body.appendChild(script)
+        }
+    }, []);
 
-const Competitions = () => (
-    <div className={styles.list}>
-        {competitions.map(({ id, title, start_at, end_at, participants, ...rest }) => (
-            <Competition key={id} title={title} id={id} start_at={start_at} end_at={end_at} participants={participants} />
-        ))}
-    </div>
-)
+    return (
+        <div className={styles.list}>
+            {competitions.map(({ id, name, start_at, end_at, status, ...rest }) => (
+                <Competition key={id} title={name} id={id} start_at={start_at} end_at={end_at} status={status} />
+            ))}
+        </div>
+    )
+}
 
 
 export default Competitions

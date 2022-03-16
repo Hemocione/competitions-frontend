@@ -1,5 +1,3 @@
-import Link from 'next/link'
-import PropTypes from 'prop-types'
 import styles from './SimpleButton.module.css'
 
 const SimpleButton = ({ handleClick, children }) => (
@@ -7,10 +5,5 @@ const SimpleButton = ({ handleClick, children }) => (
     {children}
   </button>
 )
-
-SimpleButton.propTypes = {
-  link: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-}
 
 export default SimpleButton

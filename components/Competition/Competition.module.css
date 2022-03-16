@@ -1,10 +1,17 @@
-.show{
+.show {
   padding: 10px;
   overflow: auto;
   border-bottom: 2px solid rgb(185, 185, 185);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.hidden{
+.date {
+  margin-bottom: 0;
+}
+
+.hidden {
   padding: 0px;
   overflow: hidden;
   transition: height 0.3s ease-in-out;
@@ -30,6 +37,54 @@
 .ranking p{
   margin: 0;
 }
+
 .ranking{
   padding: 0px;
+}
+
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.title {
+  max-width: 80%;
+  overflow: hidden;
+}
+
+.live {
+  height: 1em;
+  width: 1em;
+  margin-right: 12px;
+  display: block;
+  transform: scale(1);
+  animation: pulse-black 2s infinite;
+  background: rgba(51, 217, 178, 1);
+  box-shadow: 0 0 0 0 rgba(51, 217, 178, 1);
+  animation: pulse 2s infinite;
+  border-radius: 50%;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(51, 217, 178, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(51, 217, 178, 0);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(51, 217, 178, 0);
+  }
 }

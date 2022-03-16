@@ -11,8 +11,8 @@ const apiClient = axios.create(
   }
 )
 
-const getCompetitions = () => {
-  return (apiClient.get(`/competitions`))
+const getCompetitions = async () => {
+  return (await apiClient.get(`/competitions`))
 }
 
 const getCompetitionRanking = (id) => {

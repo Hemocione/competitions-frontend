@@ -1,4 +1,5 @@
 import { Competitions, Navbar } from '../components';
+import { getCompetitions } from '../utils/api';
 import styles from './index.module.css'
 
 export default function Home({competitions}) {
@@ -11,14 +12,7 @@ export default function Home({competitions}) {
 }
 
 export const getStaticProps = async () => {
-  const url = new URL('/competitions', process.env.NEXT_PUBLIC_BACKEND_URL);
-  const headers = new Headers({
-    'Content-Type': 'application/json'
-  })
-  const competitionsRes = await fetch(url, {
-    method: 'GET',
-    headers: headers
-  })
-  const competitions = await competitionsRes.json()
+  const competitionsRes = await getCompetitions()
+  const competitions = await competitionsRes.data
   return { props: { competitions: competitions }, revalidate: 300 }
 }

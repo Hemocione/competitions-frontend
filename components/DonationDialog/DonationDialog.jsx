@@ -22,6 +22,10 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
         user_email: ''
     })
     const [errorText, setErrorText] = useState('')
+    const canSend = donationData.user_name != ''
+        && donationData.user_email != ''
+        && donationData.competitionTeamId != 0
+        && !loading
 
     const handleTeamChange = (event) => {
         setDonationData({ ...donationData, competitionTeamId: event.target.value })
@@ -38,12 +42,12 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
         setLoading(true);
         window.grecaptcha.ready(() => {
             window.grecaptcha.execute(process.env.NEXT_PUBLIC_SITE_KEY, { action: 'submit' }).then(token => {
-                return(submitWithToken(token))
+                return (submitWithToken(token))
             });
         });
     }
     const submitWithToken = (token) => {
-        registerDonation({...donationData, token: token}).then((response) => {
+        registerDonation({ ...donationData, token: token }).then((response) => {
             if (response.status === 201) {
                 return handleClose();
             }
@@ -55,7 +59,6 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
         })
     }
 
-    const canSend = donationData.user_name != '' && donationData.user_email != '' && donationData.competitionTeamId != 0
     return (
         <Dialog disableEnforceFocus open={open} onClose={handleClose}>
             <DialogTitle>

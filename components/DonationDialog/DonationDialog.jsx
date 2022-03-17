@@ -66,7 +66,7 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
             </DialogTitle>
             <DialogContent>
                 <DialogContentText>
-                    Informe seus dados para poder registrar sua doação
+                    Informe seus dados para registrar sua doação
                 </DialogContentText>
             </DialogContent>
             <div className={styles.textFieldsContainer}>
@@ -79,7 +79,6 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                     margin="dense"
                     id="name"
                     label="Nome completo"
-                    fullWidth
                     variant="standard"
                 />
                 <TextField

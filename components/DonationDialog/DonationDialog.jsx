@@ -80,6 +80,7 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                     id="name"
                     label="Nome completo"
                     variant="standard"
+                    fullWidth
                 />
                 <TextField
                     onChange={handleEmailChange}

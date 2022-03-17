@@ -16,6 +16,11 @@
     max-width: 40%;
 }
 
+.headerTitle:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
 .competitions {
     color: #E00E16;
     margin-left: 10px;

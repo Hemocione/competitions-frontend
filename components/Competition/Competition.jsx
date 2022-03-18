@@ -7,11 +7,11 @@ import { CircularProgress } from '@mui/material';
 import Image from 'next/image'
 
 const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
-    const [height, setHeight] = useState(0);
     // 0 = not loading, 1 = loading, 2 = loaded
     const [loadingRanking, setLoadingRanking] = useState(0)
     const [ranking, setRanking] = useState([])
     const [arrowRotation, setArrowRotation] = useState(0)
+    const [hiddenStyle, setHiddenStyle] = useState({padding: '0px', overflow: 'hidden', transition: 'height 0.3s ease-in-out', height: 0})
     const arrowSize = 40
     const handleFilterOpening = () => {
         if (loadingRanking > 0) {
@@ -25,7 +25,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
 
     useEffect(() => {
         if (loadingRanking === 2) {
-            setHeight(ref.current?.getBoundingClientRect().height)
+            setHiddenStyle({...hiddenStyle, overflow: 'scroll', height: Math.min(ref.current?.getBoundingClientRect().height, 500)})
             setArrowRotation(90)
         } else if (loadingRanking === 1) {
             getCompetitionRanking(id).then(({ data }) => {
@@ -35,10 +35,10 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
                 setLoadingRanking(0)
             })
         } else {
-            setHeight(0)
+            setHiddenStyle({...hiddenStyle, overflow: 'hidden', height: 0})
             setArrowRotation(0)
         }
-    }, [loadingRanking, id]);
+    }, [loadingRanking, id, hiddenStyle]);
 
     return (
         <div className={styles.wholeItem} key={id}>
@@ -74,7 +74,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
                     <Image height={arrowSize} width={arrowSize} alt='Arrow' src='/arrow.svg' />
                 </div>}
             </div>
-            <div className={styles.hidden} style={{ height }}>
+            <div style={hiddenStyle}>
                 <div className={styles.ranking} ref={ref}>
                     <Ranking competition_id={id} ranking={ranking} ableToDonate={status === 2} />
                 </div>

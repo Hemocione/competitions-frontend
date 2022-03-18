@@ -13,7 +13,6 @@
 
 .hidden {
   padding: 0px;
-  overflow: hidden;
   transition: height 0.3s ease-in-out;
 }
  
@@ -23,10 +22,11 @@
 }
 
 .wholeItem{
-  margin:0px;
+  margin: 20px;
   float:left;
   padding: 0px;
   width: 100%;
+  box-shadow:0 0 1em rgb(161, 161, 161);
 }
 
 .wholeItem div{

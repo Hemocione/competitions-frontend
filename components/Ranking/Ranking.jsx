@@ -11,7 +11,7 @@ const Ranking = ({ competition_id, ableToDonate, ranking, ...rest }) => {
         setOpenDialog(false)
     )
     return (
-        <div style={{marginBottom: '36px'}}>
+        <div>
             {ableToDonate ? <div className={styles.buttonBox}>
                 <SimpleButton handleClick={donationClickHandler}>Registre sua doação</SimpleButton>
                 <DonationDialog open={openDialog} handleClose={dialogCloseHandler} competitionTeams={ranking} competitionId={competition_id} />

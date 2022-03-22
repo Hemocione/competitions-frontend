@@ -49,6 +49,7 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
     const submitWithToken = (token) => {
         registerDonation({ ...donationData, token: token }).then((response) => {
             if (response.status === 201) {
+                setLoading(false);
                 return handleClose();
             }
             setLoading(false);

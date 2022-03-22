@@ -68,7 +68,8 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
                         width: `${arrowSize}px`,
                         height: `${arrowSize}px`,
                         marginRight: '20px',
-                        marginLeft: '20px'
+                        marginLeft: '20px',
+                        transition: 'transform 0.4s ease-in-out'
                     }
                 }>
                     <Image height={arrowSize} width={arrowSize} alt='Arrow' src='/arrow.svg' />

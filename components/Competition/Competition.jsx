@@ -7,7 +7,7 @@ import { CircularProgress } from '@mui/material';
 import Image from 'next/image'
 
 const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
-    const [height, setHeight] = useState(0);
+    const [height, setHeight] = useState(0)
     // 0 = not loading, 1 = loading, 2 = loaded
     const [loadingRanking, setLoadingRanking] = useState(0)
     const [ranking, setRanking] = useState([])
@@ -38,7 +38,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
             setHeight(0)
             setArrowRotation(0)
         }
-    }, [loadingRanking, id]);
+    }, [loadingRanking, id, ranking]);
 
     return (
         <div className={styles.wholeItem} key={id}>
@@ -68,13 +68,14 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
                         width: `${arrowSize}px`,
                         height: `${arrowSize}px`,
                         marginRight: '20px',
-                        marginLeft: '20px'
+                        marginLeft: '20px',
+                        transition: 'transform 0.4s ease-in-out'
                     }
                 }>
                     <Image height={arrowSize} width={arrowSize} alt='Arrow' src='/arrow.svg' />
                 </div>}
             </div>
-            <div className={styles.hidden} style={{ height }}>
+            <div className={styles.hidden} style={{height}}>
                 <div className={styles.ranking} ref={ref}>
                     <Ranking competition_id={id} ranking={ranking} ableToDonate={status === 2} />
                 </div>

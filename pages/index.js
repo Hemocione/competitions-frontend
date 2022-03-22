@@ -11,6 +11,7 @@ export default function Home({competitions}) {
   )
 }
 
+// Get the competitions from the API before loading page
 export const getServerSideProps = async () => {
   const competitionsRes = await getCompetitions()
   const competitions = await competitionsRes.data

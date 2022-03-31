@@ -2,22 +2,29 @@ table.rtable {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  
 }
   
 .rtable td {
+  padding: 13px;
+  text-align: center;
+}
+.rtable td:nth-child(2){
   text-align: left;
-  padding: 8px;
 }
 .rtable th{
-  text-align: left;
+  text-align: center;
   padding: 9px;
   background-color: #D1151A;
   color: #FFFFFF;
 }
+.rtable th:nth-child(2){
+  text-align: left;
+}
+
 .rtable tr:nth-child(odd) {
   background-color: #dddddd;
 }
-
 .buttonBox{
   background-color: rgb(255, 220, 220);
   padding: 15px;

@@ -5,9 +5,12 @@
 
 .number_position {
     text-align: center;
-    margin-left: 10px;
 }
 
 .row {
     vertical-align: center;
+}
+.dcount{
+    font-weight: bold;
+    font-size: 18px;
 }

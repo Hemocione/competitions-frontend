@@ -14,7 +14,7 @@ const Ranker = ({ position, team_name, donation_count }) => {
                     {position}
                 </span>}</td>
             <td>{team_name}</td>
-            <td>{donation_count}</td>
+            <td className={styles.dcount}>{donation_count}</td>
         </tr>
     )
 }

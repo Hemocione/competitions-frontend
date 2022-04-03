@@ -14,10 +14,12 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
     const [arrowRotation, setArrowRotation] = useState(0)
     const arrowSize = 40
     const handleFilterOpening = () => {
+        console.log(loadingRanking);
         if (loadingRanking > 0) {
             setLoadingRanking(0)
         } else {
             setLoadingRanking(1)
+            setRanking([]);
         }
     }
 
@@ -27,7 +29,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
         if (loadingRanking === 2) {
             setHeight(ref.current?.getBoundingClientRect().height)
             setArrowRotation(90)
-        } else if (loadingRanking === 1) {
+        } else if (loadingRanking === 1 && ranking.length == 0) {
             getCompetitionRanking(id).then(({ data }) => {
                 setRanking(data)
                 setLoadingRanking(2)

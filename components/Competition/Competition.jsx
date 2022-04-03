@@ -14,7 +14,6 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
     const [arrowRotation, setArrowRotation] = useState(0)
     const arrowSize = 40
     const handleFilterOpening = () => {
-        console.log(loadingRanking);
         if (loadingRanking > 0) {
             setLoadingRanking(0)
         } else {

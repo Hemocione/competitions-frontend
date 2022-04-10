@@ -18,6 +18,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
             setLoadingRanking(0)
         } else {
             setLoadingRanking(1)
+            setRanking([]);
         }
     }
 
@@ -27,7 +28,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
         if (loadingRanking === 2) {
             setHeight(ref.current?.getBoundingClientRect().height)
             setArrowRotation(90)
-        } else if (loadingRanking === 1) {
+        } else if (loadingRanking === 1 && ranking.length == 0) {
             getCompetitionRanking(id).then(({ data }) => {
                 setRanking(data)
                 setLoadingRanking(2)

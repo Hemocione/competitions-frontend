@@ -11,6 +11,7 @@ export default function Home({competitions}) {
   )
 }
 
+// Get competitions using SSR
 export const getServerSideProps = async () => {
   const competitionsRes = await getCompetitions()
   const competitions = await competitionsRes.data

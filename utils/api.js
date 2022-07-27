@@ -15,8 +15,8 @@ const getCompetitions = async () => {
   return (await apiClient.get(`/competitions`))
 }
 
-const getCompetitionRanking = (id) => {
-  return (apiClient.get(`/competitions/${id}/ranking`))
+const getCompetitionRanking = async (id) => {
+  return (await apiClient.get(`/competitions/${id}/ranking`))
 }
 
 const registerDonation = ({competitionId, competitionTeamId, user_email, user_name, token}) => {

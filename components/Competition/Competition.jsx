@@ -26,8 +26,14 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
 
     useEffect(() => {
         if (loadingRanking === 2) {
-            setHeight(ref.current?.getBoundingClientRect().height)
-            setArrowRotation(90)
+            /*
+                hotfix - this must be changed on the future as it is only a
+                fast way to fix a rendering problem
+            */
+            setTimeout(() => {
+                setHeight(ref.current?.getBoundingClientRect().height)
+                setArrowRotation(90)
+            }, 100)
         } else if (loadingRanking === 1 && ranking.length == 0) {
             getCompetitionRanking(id).then(({ data }) => {
                 setRanking(data)

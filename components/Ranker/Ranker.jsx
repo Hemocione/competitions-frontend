@@ -1,6 +1,6 @@
 import styles from './Ranker.module.css'
 
-const Ranker = ({ position, team_name, donation_count }) => {
+const Ranker = ({ position, name, donation_count }) => {
     const position_map = {
         1: <img alt="First Place" src='/medals/first.png' className={styles.medal} />,
         2: <img alt="Second Place" src='/medals/second.png' className={styles.medal} />,
@@ -13,7 +13,7 @@ const Ranker = ({ position, team_name, donation_count }) => {
                 <span className={styles.number_position}>
                     {position}
                 </span>}</td>
-            <td>{team_name}</td>
+            <td>{name}</td>
             <td className={styles.dcount}>{donation_count}</td>
         </tr>
     )

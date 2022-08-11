@@ -2,7 +2,7 @@ import styles from './Competition.module.css'
 import React, { useRef, useEffect, useState } from "react";
 import { Ranking, CompetitionStatus } from '..'
 import { getHumanReadableDate } from '../../utils/dates';
-import { getCompetitionRanking } from '../../utils/api';
+import { getCompetitionRankingBy } from '../../utils/api';
 import { CircularProgress } from '@mui/material';
 import Image from 'next/image'
 
@@ -35,7 +35,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
                 setArrowRotation(90)
             }, 100)
         } else if (loadingRanking === 1 && ranking.length == 0) {
-            getCompetitionRanking(id).then(({ data }) => {
+            getCompetitionRankingBy(id, 'institutions').then(({ data }) => {
                 setRanking(data)
                 setLoadingRanking(2)
             }).catch((error) => {

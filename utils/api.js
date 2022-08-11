@@ -15,8 +15,12 @@ const getCompetitions = async () => {
   return (await apiClient.get(`/competitions`))
 }
 
-const getCompetitionRanking = async (id) => {
-  return (await apiClient.get(`/competitions/${id}/ranking`))
+const getCompetitionRankingBy = async (id, by) => {
+  return (await apiClient.get(`/v1/competitions/${id}/rankings/`, {
+    params: {
+      by: by || 'teams'
+    }
+  }))
 }
 
 const registerDonation = ({competitionId, competitionTeamId, user_email, user_name, token}) => {
@@ -29,4 +33,4 @@ const registerDonation = ({competitionId, competitionTeamId, user_email, user_na
   }))
 }
 
-export { getCompetitionRanking, registerDonation, getCompetitions }
+export { getCompetitionRankingBy, registerDonation, getCompetitions }

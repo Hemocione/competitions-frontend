@@ -26,7 +26,7 @@ const Ranking = ({ competition_id, ableToDonate, ranking, ...rest }) => {
                 </thead>
                 <tbody>
                 {ranking.map((rank, index) => (
-                    <Ranker position={index+1} team_name={rank.team.name} donation_count={rank.donation_count} key={rank.id} />
+                    <Ranker position={index+1} name={rank.name} donation_count={rank.donation_count} key={rank.id} />
                 ))}
                 </tbody>
             </table>

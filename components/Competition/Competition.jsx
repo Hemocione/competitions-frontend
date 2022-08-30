@@ -11,7 +11,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
     // 0 = not loading, 1 = loading, 2 = loaded
     const [loadingRanking, setLoadingRanking] = useState(0)
     const [ranking, setRanking] = useState([])
-    const [rankingType, setRankingType] = useState('institutions')
+    const [rankingType, setRankingType] = useState('teams')
     const [arrowRotation, setArrowRotation] = useState(0)
     const ref = useRef(null);
     const arrowSize = 40

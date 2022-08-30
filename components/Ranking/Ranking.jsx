@@ -45,8 +45,8 @@ const Ranking = ({ competition_id, ableToDonate, ranking, rankingType, onRanking
                                     }
                                 }
                                >
+                                <MenuItem value="teams">Time</MenuItem>
                                 <MenuItem value="institutions">Instituição</MenuItem>
-                                <MenuItem value="team">Time</MenuItem>
                                </Select>
                             </FormControl>
                         </th>

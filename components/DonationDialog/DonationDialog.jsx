@@ -12,7 +12,6 @@ import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { height } from '@mui/system';
 
 const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) => {
     const [loading, setLoading] = useState(false)
@@ -110,7 +109,7 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                         fullWidth
                     >
                         {competitionTeams.map(competitionTeam => (
-                            <MenuItem value={competitionTeam.id} key={competitionTeam.id}>{competitionTeam.team.name}</MenuItem>
+                            <MenuItem value={competitionTeam.id} key={competitionTeam.id}>{competitionTeam.name}</MenuItem>
                         ))}
                     </Select>
                 </FormControl>

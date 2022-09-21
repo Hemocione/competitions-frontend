@@ -2,7 +2,7 @@ import styles from './Competition.module.css'
 import React, { useRef, useEffect, useState } from "react";
 import { Ranking, CompetitionStatus } from '..'
 import { getHumanReadableDate } from '../../utils/dates';
-import { getCompetitionRanking } from '../../utils/api';
+import { getCompetitionRankingBy } from '../../utils/api';
 import { CircularProgress } from '@mui/material';
 import Image from 'next/image'
 
@@ -11,8 +11,11 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
     // 0 = not loading, 1 = loading, 2 = loaded
     const [loadingRanking, setLoadingRanking] = useState(0)
     const [ranking, setRanking] = useState([])
+    const [rankingType, setRankingType] = useState('teams')
     const [arrowRotation, setArrowRotation] = useState(0)
+    const ref = useRef(null);
     const arrowSize = 40
+
     const handleFilterOpening = () => {
         if (loadingRanking > 0) {
             setLoadingRanking(0)
@@ -21,8 +24,17 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
             setRanking([]);
         }
     }
-
-    const ref = useRef(null);
+    const handleRankingTypeChange = async (type) => {
+        setLoadingRanking(1)
+        setRankingType(type);
+        try {
+            const { data } = await getCompetitionRankingBy(id, type)
+            setRanking(data)
+            setLoadingRanking(2)
+        } catch (error) {
+            setLoadingRanking(0)
+        }
+    }
 
     useEffect(() => {
         if (loadingRanking === 2) {
@@ -35,7 +47,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
                 setArrowRotation(90)
             }, 100)
         } else if (loadingRanking === 1 && ranking.length == 0) {
-            getCompetitionRanking(id).then(({ data }) => {
+            getCompetitionRankingBy(id, rankingType).then(({ data }) => {
                 setRanking(data)
                 setLoadingRanking(2)
             }).catch((error) => {
@@ -45,7 +57,7 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
             setHeight(0)
             setArrowRotation(0)
         }
-    }, [loadingRanking, id, ranking]);
+    }, [loadingRanking, id, ranking, rankingType]);
 
     return (
         <div className={styles.wholeItem} key={id}>
@@ -84,7 +96,13 @@ const Competition = ({ id, start_at, end_at, title, status, ...rest }) => {
             </div>
             <div className={styles.hidden} style={{height}}>
                 <div className={styles.ranking} ref={ref}>
-                    <Ranking competition_id={id} ranking={ranking} ableToDonate={status === 2} />
+                    <Ranking
+                        competition_id={id}
+                        ranking={ranking}
+                        ableToDonate={status === 2}
+                        rankingType={rankingType}
+                        onRankingTypeChange={handleRankingTypeChange}
+                    />
                 </div>
             </div>
         </div >

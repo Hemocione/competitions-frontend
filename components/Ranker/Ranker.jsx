@@ -1,5 +1,6 @@
 import styles from './Ranker.module.css'
 
+// TODO: check the img tag
 const Ranker = ({ position, name, donation_count }) => {
     const position_map = {
         1: <img alt="First Place" src='/medals/first.png' className={styles.medal} />,

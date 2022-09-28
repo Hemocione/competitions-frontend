@@ -1,2 +1,2 @@
 ## Running:
-npm run dev
+npm/yarn run dev

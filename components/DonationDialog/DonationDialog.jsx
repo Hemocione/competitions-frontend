@@ -1,12 +1,12 @@
 import styles from './DonationDialog.module.css'
 import { React, useState } from "react";
 import { registerDonation } from '../../utils/api';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import Dialog from '@material-ui/core/Dialog';
-import Button from '@material-ui/core/Button';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContentText from '@mui/material/DialogContentText';
+import Dialog from '@mui/material/Dialog';
+import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
@@ -69,8 +69,6 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                 <DialogContentText  >
                     Informe seus dados para registrar sua doação
                 </DialogContentText>
-            </DialogContent>
-            <div className={styles.textFieldsContainer}>
                 <TextField
                     onChange={handleNameChange}
                     value={donationData.user_name}
@@ -100,20 +98,21 @@ const DonationDialog = ({ open, handleClose, competitionTeams, competitionId }) 
                 <br />
                 <br />
                 <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">Time</InputLabel>
+                    <InputLabel id="team-select-label">Time</InputLabel>
                     <Select
+                        labelId="team-select-label"
                         id="team-selector"
                         placeholder='Time'
+                        autoWidth
                         label="Time"
                         onChange={handleTeamChange}
-                        fullWidth
                     >
                         {competitionTeams.map(competitionTeam => (
                             <MenuItem value={competitionTeam.id} key={competitionTeam.id}>{competitionTeam.name}</MenuItem>
                         ))}
                     </Select>
                 </FormControl>
-            </div>
+            </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose} color="primary">
                     Cancelar

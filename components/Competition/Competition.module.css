@@ -23,8 +23,7 @@
 }
 
 .wholeItem{
-  margin: 20px;
-  float:left;
+  /* float:left; */
   padding: 0px;
   width: 100%;
   box-shadow:0 0 1em rgb(161, 161, 161);

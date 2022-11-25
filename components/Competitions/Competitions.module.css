@@ -1,7 +1,18 @@
 .list {
-    margin: 0px auto;
-    display: flex;
-    flex-direction: column;
-    margin-top: 2em;
-    width: 80%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  width: 80%;
+  gap: 32px;
+}
+
+@media screen and (max-width: 768px) {
+  .list {
+    width: 100%;
+    margin-top: 0;
+    gap: 0;
   }
+}
+ 
